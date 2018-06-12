@@ -1,5 +1,5 @@
 # headless-chrome-sw-issues
-When emulating an offline network condition in headless chrome, service worker fetch requests are somehow still succeeding even after clearing the cache. The request is not reaching the server. There seems to be some cache that is not getting cleared. This issue doesn't seem to happen when using a frame buffer. The issue is also intermittent.
+When emulating an offline network condition in headless chrome, service worker fetch requests are somehow still succeeding even after clearing the cache. The request is not reaching the server. There seems to be some cache that is not getting cleared. This issue doesn't seem to happen when using a frame buffer. The issue is also intermittent. We discovered this issue while building some service worker tests, instrumented with the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 [Screencast video of reproduction](https://www.youtube.com/watch?v=CsPJVHv2vaw)
 
