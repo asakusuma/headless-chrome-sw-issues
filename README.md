@@ -3,6 +3,8 @@ Reproduce issues with headless chrome and service workers offline
 
 [Screencast video of reproduction](https://www.youtube.com/watch?v=CsPJVHv2vaw)
 
+## Setup
+
 ```
 python -m SimpleHTTPServer
 ```
@@ -11,6 +13,8 @@ In another terminal
 ```
 chrome-canary --headless --remote-debugging-port=9200
 ```
+
+## Steps to Reproduce
 
 1. Open `http://localhost:9200` in chrome.
 2. Click `about:blank`
@@ -21,4 +25,8 @@ chrome-canary --headless --remote-debugging-port=9200
 7. Focus the url bar and hit enter to navigate again
 8. Notice that in the network tab we see a response from the service worker, even though we are offline and we have no cache
 
-https://www.youtube.com/watch?v=CsPJVHv2vaw
+## Notes
+
+* Issue is intermittent. There seems to be some sort of race condition.
+* Issue happens in both Chrome and Chrome Canary. The only difference is that the `sw.js` request actually succeeds in stable Chrome.
+* We also tried hitting the `Disable Cache` checkbox. That also sometimes reproduces the issue.
